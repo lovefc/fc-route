@@ -1,0 +1,30 @@
+{
+	"name": "fc-route",
+	"version": "0.0.1",
+	"description": "又一个强大轻便的nodejs路由",
+	"keywords": [
+		"route",
+		"nodejs route",
+		"路由",
+		"强大的路由",
+		"轻便路由"
+	],
+	"homepage": "https://github.com/lovefc/fc-route",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lovefc/fc-route.git"
+	},
+
+	"author": {
+		"name": "lovefc",
+		"email": "lovefc@88.com",
+		"url": "https://lovefc.cn"
+	},
+	
+	"engines": {
+		"node": ">= 8.0.0"
+	},
+	
+	"license": "MIT"
+}
