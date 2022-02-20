@@ -10,7 +10,7 @@ class request {
 		let options = _url.parse(url); // 要访问的url;
 		let port = options.port ? options.port : 80;
 		let protocol = options.protocol;
-		if (protocol === 'https') {
+		if (protocol === 'https:') {
 			port = options.port ? options.port : 443;
 			this.http = require('http2');
 		} else {
@@ -28,6 +28,7 @@ class request {
 			let options = _url.parse(req.url);
 			options.headers = req.headers;
 			options.headers.host = that.options.hostname;
+			console.log(options);
 			let method = req.method.toLowerCase();
 			let options3 = {
 				hostname: that.options.hostname,
@@ -37,6 +38,7 @@ class request {
 				method: method,
 				headers: options.headers
 			};
+			//options3.headers.referer =  that.options.hostname+options.path;
 			let proxyRequest = that.http.request(options3, function (proxyResponse) { //代理请求获取的数据再返回给本地res
 				proxyResponse.on('data', function (chunk) {
 					// console.log('proxyResponse length:', chunk.length);
