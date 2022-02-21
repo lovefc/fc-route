@@ -10,11 +10,12 @@ class request {
 		let options = _url.parse(url); // 要访问的url;
 		let port = options.port ? options.port : 80;
 		let protocol = options.protocol;
+		this.http = require('http');
 		if (protocol === 'https:') {
 			port = options.port ? options.port : 443;
-			this.http = require('https');
+			this.http2 = require('tls');
 		} else {
-			this.http = require('http');
+			this.http2 = require('http');
 		}
 		options.port = port;
 		this.options = options;
@@ -24,11 +25,21 @@ class request {
 	// 反向代理
 	proxy(sport) {
 		let that = this;
-		let http = require('http');
-		http.createServer(function (req, res) {
+		let server = that.http.createServer({
+            //key: fs.readFileSync(__dirname+'/server.key'),
+           //cert: fs.readFileSync(__dirname+'/server.crt'),
+        },that.onRequest);
+        server.listen(sport);
+	}
+    
+    onRequest (req, res) {
+		let that = this;
+
 			let options = _url.parse(req.url);
+								console.log(options);
 			options.headers = req.headers;
 			options.headers.host = that.options.hostname;
+
 			let method = req.method.toLowerCase();
 			let options3 = {
 				hostname: that.options.hostname,
@@ -40,7 +51,7 @@ class request {
 				rejectUnauthorized : false
 			};
 			//options3.headers.referer =  that.options.hostname+options.path;
-			let proxyRequest = that.http.request(options3, function (proxyResponse) { //代理请求获取的数据再返回给本地res
+			let proxyRequest = that.http2.request(options3, function (proxyResponse) { //代理请求获取的数据再返回给本地res
 				proxyResponse.on('data', function (chunk) {
 					// console.log('proxyResponse length:', chunk.length);
 					res.write(chunk, 'binary');
@@ -60,10 +71,9 @@ class request {
 			});
 			req.on('end', function () {
 				proxyRequest.end();
-			});
-		}).listen(sport);
+			});		
+		
 	}
-    
 	// 产生区间随机数
 	random(minNumber, maxNumber) {
 

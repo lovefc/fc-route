@@ -15,16 +15,16 @@
 		"type": "git",
 		"url": "https://github.com/lovefc/fc-route.git"
 	},
-
 	"author": {
 		"name": "lovefc",
 		"email": "lovefc@88.com",
 		"url": "https://lovefc.cn"
 	},
-	
 	"engines": {
 		"node": ">= 8.0.0"
 	},
-	
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"eventproxy": "^1.0.0"
+	}
 }

@@ -11,7 +11,7 @@ const request = require('./request.js');
 let res = new request();
 
 // 代理
-res.url('https://lovefc.cn/').proxy('1993');
+res.url('https://www.baidu.com/').proxy('1993');
 
 /*
 (async function result() {
