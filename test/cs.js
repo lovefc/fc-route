@@ -84,7 +84,7 @@ const httpsOption = {
 }
 
 var sserver = https.createServer(httpsOption, app).listen(httpsPort);
-server.on('listening', function() {
+sserver.on('listening', function() {
   httpsPort = server.address().port;
 });
 net.createServer(function(socket){

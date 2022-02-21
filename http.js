@@ -9,18 +9,28 @@ const _router = require('./index.js');
 
 let server = http.createServer();
 
+let server2 = http.createServer();
+
 let router = new _router();
 
 //router3.prefix('/app');
 // 默认匹配页
 
 router.all('/', function (req, res) {
-router.contents('http://lovefc.cn/',8888);
+    res.writeHead(200);
+    res.end("hello world\n");
 })
-
-router.http(server);
 
 // 3. 绑定端口号，启动服务
 server.listen(3002, function () {
 	console.log('服务器3002启动成功，可以访问了。。。')
 })
+
+// 3. 绑定端口号，启动服务
+server2.listen(3003, function () {
+	console.log('服务器3003启动成功，可以访问了。。。')
+})
+
+router.http(server);
+router.http(server2);
+

@@ -19,9 +19,10 @@ router3.all('/', function (req, res) {
 	res.end(postHTML);
 });
 
-router3.http(server);
 
 // 3. 绑定端口号，启动服务
 server.listen(3002, function () {
 	console.log('服务器3002启动成功，可以访问了。。。')
 })
+
+router3.http(server);
