@@ -1,7 +1,7 @@
 /*
  * @Author       : lovefc
  * @Date         : 2022-02-19 23:48:06
- * @LastEditTime : 2022-02-21 18:06:43
+ * @LastEditTime : 2022-02-22 13:56:03
  */
 const _url = require('url');
 const _querystring = require("querystring");
@@ -20,41 +20,52 @@ class request {
 		this.options = options;
 		return this;
 	}
-	
-    ssl(options){
-				
+
+	proxy(options) {
+		let routes = Object.assign(this.routeRule.all, this.routeRule[method]);
 	}
-	
+
 	// 反向代理
 	proxy(sport) {
 		let that = this;
 		let http = require('http');
-		let server = http.createServer(function(req,res){
-			that.onRequest(that,req,res);
+		let server = http.createServer(function (req, res) {
+			that.onRequest(that, req, res);
 		});
 		server.listen(sport);
 	}
-	
+
 	// 参数
-	parameter (req,res){
+	parameter(req, res) {
 		let options = _url.parse(req.url);
 		options.headers = req.headers;
 		options.headers.host = this.options.hostname;
 		let method = req.method.toLowerCase();
 		options = {
-			hostname: this.options.hostname,
+			//hostname: this.options.hostname,
 			host: this.options.hostname,
 			port: this.options.port,
-			path: options.path,
+			path: this.options.path + options.path,
 			method: method,
 			headers: options.headers,
 			rejectUnauthorized: false
 		};
+		let options2 = {
+			host: '127.0.0.1',
+			port: '7890',
+			method: 'get',//这里是发送的方法
+			path: 'https://www.google.com.hk' + options.path,   //这里是访问的路径
+			headers: {
+				'Accept-Language': 'zh-CN,zh;q=0.8',
+				'Host': 'www.google.com.hk'
+			}
+		}
+		options = Object.assign(options, options2);
 		return options;
 	}
-	
-	onRequest (that,req, res) {
-		let options = that.parameter (req,res);
+
+	onRequest(that, req, res) {
+		let options = that.parameter(req, res);
 		let proxyRequest = that.http.request(options, function (proxyResponse) { //代理请求获取的数据再返回给本地res
 			proxyResponse.on('data', function (chunk) {
 				res.write(chunk, 'binary');
