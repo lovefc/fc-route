@@ -5,24 +5,23 @@
  */
 const http = require('http');
 
-const _router = require('fc-route');
+const _router = require('../index');
 
 let server = http.createServer();
 
-let router3 = new _router();
+let router = new _router();
 
-//router3.prefix('/app');
+//router.prefix('/app');
 
 // 默认匹配页
-router3.all('/', function (req, res) {
+router.all('/', function (req, res) {
 	let postHTML = 'hello world';
 	res.end(postHTML);
 });
-
 
 // 3. 绑定端口号，启动服务
 server.listen(3002, function () {
 	console.log('服务器3002启动成功，可以访问了。。。')
 })
 
-router3.http(server);
+router.http(server);

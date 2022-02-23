@@ -1,4 +1,4 @@
-const _router = require('fc-route.js');
+const _router = require('../index');
 
 let router = new _router();
 
@@ -11,7 +11,7 @@ const server = http2.createSecureServer({
     cert: fs.readFileSync(__dirname+'/server.crt'),
 });
 
-//router3.prefix('/app');
+//router.prefix('/app');
 
 // 默认匹配页
 router.all('/', function (req, res) {

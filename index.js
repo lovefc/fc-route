@@ -7,4 +7,4 @@
  */
 const route = require('./lib/route.js');
 
-module.exports = route;
+module.exports = route; 

@@ -2,7 +2,7 @@ var httpsModule = require('https');
 
 var fs = require('fs');
 
-const _router = require('fc-route');
+const _router = require('../index');
 
 let router = new _router();
 
