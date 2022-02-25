@@ -23,9 +23,5 @@
 	"engines": {
 		"node": ">= 8.0.0"
 	},
-	"license": "MIT",
-	"dependencies": {
-		"axios": "^0.26.0",
-		"eventproxy": "^1.0.0"
-	}
+	"license": "MIT"
 }
