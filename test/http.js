@@ -13,30 +13,18 @@ let router = new _router();
 
 //router.prefix('/');
 
-
-// 默认匹配页
 router.get('/@zm',function (req, res) {
-	let postHTML = 'hello world';
-	res.end(postHTML);
-});
-
-
-router.get(function (req, res) {
-	let postHTML = '4\r\n';
-	res.write(postHTML);
+	let {zm} = req.params;
+	res.end(zm);
 });
 
 router.get(function (req, res) {
-	let postHTML = '2\r\n';
-	res.write(postHTML);
+	console.log(req.headers);
 });
 
-router.get(function (req, res) {
-	let postHTML = '3\r\n';
-	res.write(postHTML);
+router.get('/',function(req,res){	
+	res.end('hello world');
 });
-
-
 
 // 3. 绑定端口号，启动服务
 server.listen(3002, function () {
