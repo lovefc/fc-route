@@ -1,6 +1,6 @@
 {
 	"name": "fc-route",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "又一个强大轻便的nodejs路由",
 	"keywords": [
 		"route",

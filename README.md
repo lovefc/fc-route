@@ -77,8 +77,8 @@ const Koa = require('koa');
 const app = new Koa();
 const _router = require('fc-route');
 let router = new _router();
-router.get('/',function (req, res) {
-	res.end('hello world');
+router.get('/', function (ctx, next) {
+	ctx.body = 'hello world';
 });
 
 router.koa(app);
