@@ -13,8 +13,11 @@
 
 ##
 
+### 安装npm包
+```
+npm install fc-route
+```
 ## 使用方法
-
 ### http：
 ```
 const http = require('http');
