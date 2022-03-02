@@ -81,7 +81,7 @@ router.get('/',function (req, res) {
 	res.end('hello world');
 });
 
-router.http(app);
+router.koa(app);
 server.listen(3004, function () {
 	console.log('服务器3004启动成功，可以访问了。。。')
 })
