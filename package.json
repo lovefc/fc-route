@@ -9,6 +9,7 @@
 		"强大的路由",
 		"轻便路由"
 	],
+	"author":"lovefc",
 	"homepage": "https://github.com/lovefc/fc-route",
 	"main": "index.js",
 	"repository": {
