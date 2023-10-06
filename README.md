@@ -147,6 +147,16 @@ router.get('/6/@zm', function (req, res) {
 > 按照一般的路由匹配，上面那个匹配肯定会覆盖下面的，实际上则不然，当你第二个参数为6的时候，只会匹配第二个
 > 这个精确匹配功能koa的路由并不具备，无需担心效率，内部有缓存机制
 
+
+## 更新记录
+
+### 2023/10/06
+0.0.5 => 现在不用担心使用原生http，处理逻辑写错了会中断了进程,另外新加了`res.json`来帮你快速输出json格式
+```
+router.get('/',function (req, res) {
+	res.json({'code':200,'msg':'sucess'});
+});
+```
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)

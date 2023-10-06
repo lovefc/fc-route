@@ -1,13 +1,14 @@
 {
 	"name": "fc-route",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "又一个强大轻便的nodejs路由",
 	"keywords": [
 		"route",
 		"nodejs route",
 		"路由",
 		"强大的路由",
-		"轻便路由"
+		"轻便路由",
+		"koa路由"
 	],
 	"author":"lovefc",
 	"homepage": "https://github.com/lovefc/fc-route",
