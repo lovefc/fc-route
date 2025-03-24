@@ -82,7 +82,7 @@ router.get('/', function (ctx, next) {
 });
 
 router.koa(app);
-server.listen(3004, function () {
+app.listen(3004, function () {
 	console.log('服务器3004启动成功，可以访问了。。。')
 })
 ```
@@ -157,6 +157,17 @@ router.get('/',function (req, res) {
 	res.json({'code':200,'msg':'sucess'});
 });
 ```
+
+### 2025/03/24
+0.0.6 => 更新了query参数规则，可以获取index?a=2
+```
+router.get('/index/%page',async function (req, res) {
+	console.log(req.params);
+	// 如果访问http://xxx.xx/index/10?a=1,将会获取到这样的值，{ page: '10', a : '1' },前面定义的name会覆盖后面的name
+    res.end('hello world');
+});
+```
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
