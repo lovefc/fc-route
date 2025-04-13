@@ -5,10 +5,10 @@
  <img src="https://img.shields.io/badge/License-Mit-blue.svg?style=plastic&logo=npm" alt="Coverage Status">
 </p>
 <h3 align="center">
- 一个轻便高效的node路由
+ 一个轻便高效的node原生路由
 </h3>
 <h4 align="center">
-支持原生node的http，https，http2模块，支持koa框架，经过高并发测试，性能优越，精确匹配，使用方便
+支持原生node的http，https，http2模块，经过高并发测试，性能优越，精确匹配，使用方便
 </h4>    
 
 ##
@@ -71,22 +71,9 @@ server.listen(3002, function () {
 	console.log('服务器3002启动成功，可以访问了。。。')
 })
 ```
-### koa：
-```
-const Koa = require('koa');
-const app = new Koa();
-const _router = require('fc-route');
-let router = new _router();
-router.get('/', function (ctx, next) {
-	ctx.body = 'hello world';
-});
 
-router.koa(app);
-app.listen(3004, function () {
-	console.log('服务器3004启动成功，可以访问了。。。')
-})
-```
 >更多使用demo请看这里 >>> [戳这里](https://github.com/lovefc/fc-route-demo)
+
 ## 路由方法
 |   方法  |   说明  |
 | --- | --- |
@@ -145,28 +132,27 @@ router.get('/6/@zm', function (req, res) {
 });
 ```
 > 按照一般的路由匹配，上面那个匹配肯定会覆盖下面的，实际上则不然，当你第二个参数为6的时候，只会匹配第二个
-> 这个精确匹配功能koa的路由并不具备，无需担心效率，内部有缓存机制
 
 
 ## 更新记录
 
 ### 2023/10/06
-0.0.5 => 现在不用担心使用原生http，处理逻辑写错了会中断了进程,另外新加了`res.json`来帮你快速输出json格式
-```
-router.get('/',function (req, res) {
-	res.json({'code':200,'msg':'sucess'});
-});
-```
+~0.0.5 => 现在不用担心使用原生http，处理逻辑写错了会中断了进程,另外新加了`res.json`来帮你快速输出json格式~
+功能已废弃，分出独立的http工具类。
 
 ### 2025/03/24
 0.0.6 => 更新了query参数规则，可以获取index?a=2
 ```
 router.get('/index/%page',async function (req, res) {
-	console.log(req.params);
-	// 如果访问http://xxx.xx/index/10?a=1,将会获取到这样的值，{ page: '10', a : '1' },前面定义的name会覆盖后面的name
+    console.log(req.params);
+    // 如果访问http://xxx.xx/index/10?a=1,将会获取到这样的值，{ page: '10', a : '1' },前面定义的name会覆盖后面的name
     res.end('hello world');
 });
 ```
+
+### 2025/04/13
+0.0.7 => 不再支持koa模式,彻底删除koa兼容，分出独立的http工具类提供使用。
+具体参考使用demo
 
 ## License
 
