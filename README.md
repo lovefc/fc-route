@@ -154,6 +154,10 @@ router.get('/index/%page',async function (req, res) {
 0.0.7 => 不再支持koa模式,彻底删除koa兼容，分出独立的http工具类提供使用。
 具体参考使用demo
 
+### 2025/04/16
+0.0.8 => 若干优化，强烈建议更新到此版本
+建议搭配此库：[https://github.com/lovefc/fc-response-demo](https://github.com/lovefc/fc-response-demo)
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
